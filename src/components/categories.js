@@ -3,9 +3,10 @@ import React from 'react'
 import { categoryData,mealData } from '../constants'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Animated,{ FadeInDown } from 'react-native-reanimated';
+import { CachedImage } from '../helpers/image';
 
 
-const Categories = ({categories,activeCategory,setActiveCategory}) => {
+const Categories = ({categories,activeCategory,handleChangeCategory}) => {
 
     return (
         <Animated.View entering={FadeInDown.duration(500).springify()} >
@@ -18,10 +19,10 @@ const Categories = ({categories,activeCategory,setActiveCategory}) => {
                 let activeButtonClass=isActive?" bg-amber-400":" bg-black/10";
                 return(
                     <TouchableOpacity key={category.idCategory} 
-                    onPress={()=>setActiveCategory(category.strCategory)}
+                    onPress={()=>handleChangeCategory(category.strCategory)}
                     className="flex items-center space-y-1">
                         <View className={"rounded-full p-2 bg-pink-400 "+activeButtonClass}>
-                            <Image source={{uri:category.strCategoryThumb}} style={{width:hp(6),height:hp(6)}} className="rounded-full"/>
+                            <CachedImage uri={category.strCategoryThumb} style={{width:hp(6),height:hp(6)}} className="rounded-full"/>
                         </View>
                         <Text className="text-neutral-600" style={{fontSize:hp(1.6)}}>{category.strCategory}</Text>
                     </TouchableOpacity>

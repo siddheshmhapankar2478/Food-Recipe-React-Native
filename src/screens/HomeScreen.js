@@ -59,7 +59,7 @@ const HomeScreen = () => {
           { key: 'greetingsAndPunchline', component: <GreetingsAndPunchline /> },
           { key: 'searchBar', component: <SearchBar /> },
           { key: 'categories', component: <Categories categories={categories} activeCategory={activeCategory} handleChangeCategory={handleChangeCategory} /> },
-          { key: 'recipes', component: <Recipes categories={categories} meals={meals} setMeals={setMeals} /> }
+          { key: 'recipes', component: <Recipes categories={categories} meals={meals} /> }
         ]}
         renderItem={({ item }) => item.component}
       />

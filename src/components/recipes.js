@@ -1,5 +1,4 @@
 import { View, Text, Image, FlatList, Pressable } from 'react-native'
-import React,{useState,useEffect} from 'react'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Animated,{ FadeInDown } from 'react-native-reanimated';
 import Loading from './loading';
@@ -21,7 +20,7 @@ const RecipeCard = ({ item, index,navigation }) => (
     height: hp(25), 
     width: hp(20),
   }}
-    className="flex-1 flex-col border border-gray-400  m-2 rounded-xl shadow-lg p-1" >
+    className="flex-1 flex-col border border-gray-400 mt-4 rounded-xl shadow-lg p-1" >
       <View className="w-fit justify-center items-center">
           <CachedImage uri={item.strMealThumb}  style={{ height: hp(20), width: hp(18) }} className="rounded-xl rounded-b-none " />
       </View>
@@ -38,9 +37,8 @@ const Recipes = ({categories,meals}) => {
   return (
       <>
     {
-      (categories.length===0||meals.length===0)?(<Loading size="large" className="mt-20"/>):(
+      (categories?.length===0||meals?.length===0)?(<Loading size="large" className="mt-20"/>):(
         <>
-      <Text className="font-bold text-neutral-600 pl-5 pt-2" style={{fontSize:hp(3)}}>Recipies</Text>
     <View className="items-center">
       <FlatList
         data={meals}

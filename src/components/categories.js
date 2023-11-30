@@ -14,7 +14,7 @@ const Categories = ({categories,activeCategory,handleChangeCategory}) => {
     contentContainerStyle={{paddingHorizontal:15}}
     className="space-x-2">
         {
-            categories.map((category)=>{
+            categories?.map((category)=>{
                 let isActive = category.strCategory === activeCategory;
                 let activeButtonClass=isActive?" bg-amber-400":" bg-black/10";
                 return(

@@ -11,11 +11,13 @@ import { mealData } from '../constants';
 import GreetingsAndPunchline from '../components/greetingsAndPunchline';
 import SearchBar from '../components/searchBar';
 import Recipes from '../components/recipes';
+import Loading from '../components/loading';
 
 const HomeScreen = () => {
   const [activeCategory, setActiveCategory] = useState("Beef");
   const [categories, setCategories] = useState([]);
   const [meals, setMeals] = useState([]);
+  const [filteredMeals, setFilteredMeals] = useState(meals);
 
   useEffect(() => {
     getCategory();
@@ -42,6 +44,26 @@ const HomeScreen = () => {
       console.log(err);
     }
   }
+  // useEffect(() => {
+  //   setMeals(filteredMeals);
+  // }, [filteredMeals]);
+
+  const getMealByName = async (searchText) => {
+    try {
+      if(searchText=""){
+        // getCategory();
+      }
+      else{
+        const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`);
+        if (response && response.data) {
+          setFilteredMeals(response.data.meals);
+          console.log(filteredMeals)
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   const handleChangeCategory=(category)=>{
     getRecipe(category);
@@ -57,7 +79,7 @@ const HomeScreen = () => {
         data={[
           { key: 'avatarAndBell', component: <AvtarAndBell /> },
           { key: 'greetingsAndPunchline', component: <GreetingsAndPunchline /> },
-          { key: 'searchBar', component: <SearchBar /> },
+          { key: 'searchBar', component: <SearchBar getMealByName={getMealByName} /> },
           { key: 'categories', component: <Categories categories={categories} activeCategory={activeCategory} handleChangeCategory={handleChangeCategory} /> },
           { key: 'recipes', component: <Recipes categories={categories} meals={meals} /> }
         ]}

@@ -1,3 +1,4 @@
+//RecipieDetailScreen
 import { View, Text, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { StatusBar } from 'expo-status-bar';
@@ -6,13 +7,14 @@ import axios from 'axios';
 import BackAndFavouriteBtn from '../components/backAndFavouriteBtn';
 import RecipeDescription from '../components/recipeDescription';
 import Ingredients from '../components/ingredients';
-import Instructions from '../components/instructions';
 const RecipieDetailScreen = (props) => {
     let item=props.route.params;
     const navigation = useNavigation();
     const[favourite,setFavourite]=useState();
     const[meal,setMeal]=useState(null);
     const[loading,setLoading]=useState(true);
+    
+
     useEffect(()=>{
         // console.log(item.idMeal);
         getMealData(item.idMeal);
@@ -35,9 +37,10 @@ const RecipieDetailScreen = (props) => {
     >
         <StatusBar />
         <BackAndFavouriteBtn navigation={navigation} favourite={favourite} setFavourite={setFavourite}/>
-        <RecipeDescription item={item} meal={meal} loading={loading} />
-        <Ingredients/>
-        <Instructions/>
+        <View className="p-4">
+          <RecipeDescription item={item} meal={meal} loading={loading} />
+          <Ingredients meal={meal}/>
+        </View>
     </ScrollView>
   )
 }

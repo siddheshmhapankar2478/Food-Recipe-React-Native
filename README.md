@@ -3,8 +3,8 @@
 
 
 
-<!-- https://github.com/siddheshmhapankar2478/Food-Recipe-React-Native/assets/72028899/ea9af84c-5ffc-4711-9b3f-0cf056a45850 -->
-![Your Image](https://github.com/siddheshmhapankar2478/Food-Recipe-React-Native/assets/72028899/ea9af84c-5ffc-4711-9b3f-0cf056a45850?s=250&v=4)
+https://github.com/siddheshmhapankar2478/Food-Recipe-React-Native/assets/72028899/ea9af84c-5ffc-4711-9b3f-0cf056a45850
+
 
 
 
